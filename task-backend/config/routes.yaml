@@ -1,0 +1,76 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
+# My routes
+
+user:
+    path: /user
+    controller: App\Controller\UserController::index
+    methods: [get]
+
+user_register:
+    path: /register
+    controller: App\Controller\UserController::register
+    methods: [post]
+
+user_login:
+    path: /login
+    controller: App\Controller\UserController::login
+    methods: [post]
+
+user_update:
+    path: /update
+    controller: App\Controller\UserController::update
+    methods: [put]
+
+user_uploadAvatar:
+    path: /user/upload-avatar
+    controller: App\Controller\UserController::uploadAvatar
+    methods: [post]
+
+user_avatar:
+    path: /user/avatar/{file}
+    controller: App\Controller\UserController::avatar
+    methods: [get]
+
+# Tasks
+task_create:
+    path: /create
+    controller: App\Controller\TaskController::create
+    methods: [post]
+
+task_update:
+    path: /task/update/{id}
+    controller: App\Controller\TaskController::create
+    methods: [put]
+
+tasks:
+    path: /tasks
+    controller: App\Controller\TaskController::tasks
+    methods: [get]
+
+task:
+    path: /task/{id}
+    controller: App\Controller\TaskController::task
+    methods: [get]
+
+task_remove:
+    path: /task/remove/{id}
+    controller: App\Controller\TaskController::remove
+    methods: [delete]
+
+task_check:
+    path: /check/{id}
+    controller: App\Controller\TaskController::taskCheck
+    methods: [put]
+
+task_search:
+    path: /task/search/{search}
+    controller: App\Controller\TaskController::search
+    methods: [get]
+

@@ -1,0 +1,44 @@
+<div class="container">
+	<h1>{{page_title}}</h1>
+	<hr>
+
+	<div class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+		You've created the task, <a [routerLink]="['/home']">see it</a>
+	</div>
+
+	<div class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error'">
+		Someting went wrong
+	</div>
+
+	<form #createForm="ngForm" class="col-md-6 ms-4" (ngSubmit)="onSubmit(createForm)">
+		<div class="row mb-5">
+			<label for="title" class="col-sm-2 col-form-label">Title:</label>
+			<div class="col-sm-10">
+				<input type="text" name="title" #title="ngModel" [(ngModel)]="task.title" class="form-control" required>
+				<small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+					The title is not valid
+				</small>
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<label for="description" class="col-sm-2 col-form-label">Description:</label>
+			<div class="col-sm-10">
+				<textarea name="description" #description="ngModel" [(ngModel)]="task.description" class="form-control" required></textarea>
+				<small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">
+					The description is not valid
+				</small>
+			</div>
+		</div>
+
+		<div class="row mb-5" *ngIf="check">
+			<label for="complete" class="col-sm-2 col-form-label">Complete:</label>
+			<div class="col-sm-2">
+				<input type="checkbox" name="complete" #complete="ngModel" [(ngModel)]="task.status" class="form-control" (change)="onCheckBoxChange($event)">
+			</div>
+		</div>
+
+		<input type="submit" value="Create" class="btn btn-primary" [disabled]="createForm.invalid">
+
+	</form>
+</div>

@@ -1,0 +1,157 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --form-control-disabled: #959495;
+	--form-control-disabled: #282c34;
+}
+
+body{
+	background-color: #282c34 !important;
+}
+
+.btn-main{
+	color: dimgray !important;
+	border: 1px solid dimgray !important;
+	transition: all 500ms !important;
+}
+
+.btn-main:hover{
+	color: white !important;
+	border: 1px solid white !important;
+}
+
+.btn-home{
+	color: dimgray !important;
+	transition: all 500ms !important;
+}
+
+.btn-home:hover{
+	color: white !important;
+}
+
+.foreground{
+	color: white;
+}
+
+.avatar_mask{
+	width: 40px;
+	height: 40px;
+	border-radius: 900px;
+	overflow: hidden;
+}
+
+.avatar_mask img{
+	display: block;
+	height: 40px;
+	margin-left: -15px;
+	/*margin-right: auto;*/
+}
+
+.list-group{
+	align-items: center !important;
+}
+
+.list-group-item{
+	padding: 0px !important;
+	border: 0px !important;
+	margin-bottom: 10px !important;
+}
+
+.page-link{
+  color: dimgray !important;
+  border: 1px solid dimgray !important;
+  transition: all 500ms;
+}
+
+.page-link:hover{
+  color: white !important;
+  border: 1px solid white !important;
+}
+
+.boxes{
+  border: 1px solid dimgray !important;
+  border-radius: 5px;
+  transition: all 500ms;
+}
+
+.boxes:hover{
+  border: 1px solid white !important;
+}
+
+.checks{
+  float: left;
+  margin: 10px auto;
+  margin-left: 10px;
+}
+
+.check{
+  display: flex;
+  justify-content: space-between;
+}
+
+.check-box{
+  margin-top: 5px;
+  margin-left: -380px;
+}
+
+/* input checkbox */
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+	display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--bs-blue);
+	/* Windows High Contrast Mode */
+  background-color: CanvasText;
+	transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}

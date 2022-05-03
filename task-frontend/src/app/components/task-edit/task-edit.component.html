@@ -1,0 +1,56 @@
+<div class="container">
+	<h1>{{page_title}}</h1>
+	<hr>
+
+	<div class="col-md-6 ms-5">
+		<div class="alert alert-success mt-3" *ngIf="status == 'success'">
+			Task updated
+		</div>
+
+		<div class="alert alert-danger mt-3" *ngIf="status == 'error'">
+			Someting went wrong
+		</div>
+
+		<div class="alert alert-success mt-3" *ngIf="status == 'checked'">
+			{{task.status}}
+		</div>
+
+		<div class="alert alert-success mt-3" *ngIf="status == 'unchecked'">
+			{{task.status}}
+		</div>
+	</div>
+
+	<form #editForm="ngForm" class="col-md-6 ms-5 form-edit" (ngSubmit)="onSubmit(editForm)">
+		<div class="row mb-5">
+			<label for="title" class="col-sm-2 col-form-label">Title:</label>
+			<div class="col-sm-10">
+				<input type="text" name="title" #title="ngModel" [(ngModel)]="task.title" class="form-control" required>
+				<small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+					The title is not valid
+				</small>
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<label for="description" class="col-sm-2 col-form-label">Description:</label>
+			<div class="col-sm-10">
+				<textarea name="description" #description="ngModel" [(ngModel)]="task.description" class="form-control" required></textarea>
+				<small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">
+					The description is not valid
+				</small>
+			</div>
+		</div>
+
+		<div class="check mb-5" *ngIf="check">
+			<label for="complete" class="me-4">Complete:</label>
+			<div class="check-box">
+				<input type="checkbox" name="complete" (change)="onCheckBoxChange($event)" *ngIf="task.status == 'Incomplete'">
+				<input type="checkbox" name="complete" (change)="onCheckBoxChange($event)" *ngIf="task.status == 'Complete'" checked>
+				<!--input type="checkbox"-->
+			</div>
+			<input type="submit" value="Edit" class="btn btn-primary" [disabled]="editForm.invalid">
+		</div>
+
+
+	</form>
+</div>
